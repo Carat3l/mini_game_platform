@@ -1,5 +1,6 @@
 import arcade
 import math
+import random
 
 from settings import *
 from player import Player
@@ -36,6 +37,17 @@ class Game(arcade.Window):
 
         self.level_buttons = []
 
+        self.step_sounds = [
+            arcade.load_sound("game_data/assets/sounds/step1.mp3"),
+            arcade.load_sound("game_data/assets/sounds/step2.mp3"),
+            arcade.load_sound("game_data/assets/sounds/step3.mp3"),
+            arcade.load_sound("game_data/assets/sounds/step4.mp3")
+        ]
+
+        self.coin_sound = arcade.load_sound("game_data/assets/sounds/coin.mp3")
+
+        self.step_timer = 0
+
         self.create_level_buttons()
 
     def create_level_buttons(self):
@@ -47,7 +59,6 @@ class Game(arcade.Window):
         for i in range(5):
 
             x = start_x + i * gap
-
             self.level_buttons.append((i + 1, x, y))
 
     def setup(self):
@@ -105,6 +116,11 @@ class Game(arcade.Window):
             gravity_constant=GRAVITY
         )
 
+    def play_step_sound(self):
+
+        sound = random.choice(self.step_sounds)
+        arcade.play_sound(sound)
+
     def on_draw(self):
 
         self.clear(arcade.color.SKY_BLUE)
@@ -138,7 +154,7 @@ class Game(arcade.Window):
                 SCREEN_WIDTH / 2,
                 SCREEN_HEIGHT - 120,
                 arcade.color.WHITE,
-                36,
+                30,
                 anchor_x="center"
             )
 
@@ -205,7 +221,7 @@ class Game(arcade.Window):
                 0,
                 SCREEN_WIDTH,
                 SCREEN_HEIGHT,
-                (0, 0, 0, 160)
+                (0, 0, 0, 150)
             )
 
             arcade.draw_text(
@@ -237,13 +253,6 @@ class Game(arcade.Window):
 
     def on_mouse_press(self, x, y, button, modifiers):
 
-        if self.game_won:
-
-            self.game_won = False
-            self.game_started = False
-            self.level = 1
-            return
-
         if not self.game_started:
 
             for level, bx, by in self.level_buttons:
@@ -256,6 +265,16 @@ class Game(arcade.Window):
 
     def on_key_press(self, key, modifiers):
 
+        if self.game_won:
+
+            if key == arcade.key.SPACE:
+
+                self.game_won = False
+                self.game_started = False
+                self.level = 1
+
+            return
+
         if not self.game_started:
 
             if arcade.key.KEY_1 <= key <= arcade.key.KEY_5:
@@ -266,7 +285,7 @@ class Game(arcade.Window):
 
             return
 
-        if key == arcade.key.ESCAPE and self.game_started:
+        if key == arcade.key.ESCAPE:
             self.paused = not self.paused
             return
 
@@ -324,6 +343,15 @@ class Game(arcade.Window):
         self.physics_engine.update()
 
         self.player.update_animation()
+
+        if abs(self.player.change_x) > 0 and not self.on_ladder:
+
+            self.step_timer += delta_time
+
+            if self.step_timer > 0.35:
+
+                self.play_step_sound()
+                self.step_timer = 0
 
         self.check_finish()
         self.check_coins()
@@ -404,7 +432,11 @@ class Game(arcade.Window):
             )
 
             for coin in coins:
+
                 coin.remove_from_sprite_lists()
+
+                arcade.play_sound(self.coin_sound)
+
                 self.coins += 1
 
     def respawn(self):

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="30" height="30" tilewidth="64" tileheight="64" infinite="0" backgroundcolor="#87ceeb" nextlayerid="5" nextobjectid="6">
+ <tileset firstgid="1" source="../../../../Desktop/kenny.tsx"/>
+ <layer id="1" name="Platforms" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMArIA5uBeAsQbx1oh9AIDFb/UeoumH4YHmz+G+5gI4nqB2s6pAZATovU9t9oOh8Fo4A4AADuthL6
+  </data>
+ </layer>
+ <layer id="2" name="Decor" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJzt0jERAAAIA7H6wb8/VHBlSBT88AkA0DLtADjmcfhtAcODAFc=
+  </data>
+ </layer>
+ <objectgroup id="3" name="Objects">
+  <object id="1" name="player_spawn" x="129" y="1027" width="64" height="64"/>
+  <object id="3" name="finish" x="449" y="1410" width="64" height="64"/>
+ </objectgroup>
+ <layer id="4" name="Spikes" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJzt0jEKADAIA0B/7tf7gi4FsYS7KVsUUgVAit4+YFDyb+x42VTqDvuSpzqAfxxyDgN6
+  </data>
+ </layer>
+</map>

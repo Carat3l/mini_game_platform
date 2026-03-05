@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="30" height="30" tilewidth="64" tileheight="64" infinite="0" backgroundcolor="#87ceeb" nextlayerid="7" nextobjectid="7">
+ <tileset firstgid="1" source="../../../../Desktop/kenny.tsx"/>
+ <layer id="1" name="Spikes" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFIx3Uo7HrcSkcBXQDo3EwCkbBKBgFQw+Mlt2jgBIwmn4wgTnjwGCzEYYBmN4Wbw==
+  </data>
+ </layer>
+ <objectgroup id="3" name="Objects">
+  <object id="1" name="player_spawn" x="318" y="1218" width="64" height="64"/>
+  <object id="4" name="finish" x="1023.27" y="1602" width="64" height="64"/>
+ </objectgroup>
+ <layer id="4" name="Decor" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJzt0jEBAAAIw7D5wb8/DPDvIFHQowkAwB/TDoAS73NZQoMAVw==
+  </data>
+ </layer>
+ <layer id="5" name="Platforms" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFtAYbB9oBdAJcJKjdDMRbcOCtJNpJir2UAmR343InMWoGG0CPj6HibnqDwRZO9Ez7yGAopvGRAKgdL/jSF63qteGWtpDDiRZ+G27hRQwYqHJvIO2ltd242mS0SKcjKa0OJQAAclsrNg==
+  </data>
+ </layer>
+ <layer id="6" name="Ladders" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztzQENACAMwLC7xb8DLHByIDmdgDVCUlWjkbvy/M09UQc38+LecSvtV242Lpcr7TUBYVAKdw==
+  </data>
+ </layer>
+ <layer id="2" name="Coins" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJxjYBg5QHWgHTAKRsEoGAWjYBRQEYzWa8QBeobTaJyMglEwCoYaAABKSACV
+  </data>
+ </layer>
+</map>

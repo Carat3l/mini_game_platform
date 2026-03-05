@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="30" height="30" tilewidth="64" tileheight="64" infinite="0" backgroundcolor="#87ceeb" nextlayerid="7" nextobjectid="3">
+ <tileset firstgid="1" source="../../../../Desktop/kenny.tsx"/>
+ <layer id="1" name="Platforms" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMApGwVAAm4F4CxRvpaE9XDQ0m5C9A2E3crjSI3yJBYMhLAY6HGDuGWh3DDSgZVrAFsb4xAhh9LiiV7k1CsgHAGgFG58=
+  </data>
+ </layer>
+ <layer id="3" name="Decor" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJzt1DENAAAIBLH3g39/eCAkDLQKbroEAJio6wDgJe9hUwOV0wBX
+  </data>
+ </layer>
+ <objectgroup id="4" name="Objects">
+  <object id="1" name="player_spawn" x="129.333" y="1601.33" width="64" height="64"/>
+  <object id="2" name="finish" x="958" y="960" width="64" height="64"/>
+ </objectgroup>
+ <layer id="2" name="Spikes" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJzt0cEJACAMBMHYlJaX1u0geQZxBvZ/cBEAAFDL6QGUMvqPXvvwrJn2Z10a8xVx
+  </data>
+ </layer>
+ <layer id="6" name="Coins" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJzt01EJAAAIQ0HL2L+in4IFZHCX4DFYFQBw9XdAABvB8gdSDUqGAHA=
+  </data>
+ </layer>
+</map>

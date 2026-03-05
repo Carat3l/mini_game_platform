@@ -45,6 +45,7 @@ class Game(arcade.Window):
         ]
 
         self.coin_sound = arcade.load_sound("game_data/assets/sounds/coin.mp3")
+        self.jump_sound = arcade.load_sound("game_data/assets/sounds/jump.mp3")
 
         self.step_timer = 0
 
@@ -322,6 +323,9 @@ class Game(arcade.Window):
         if key == arcade.key.SPACE and not self.on_ladder:
 
             if self.physics_engine.can_jump():
+
+                arcade.play_sound(self.jump_sound)
+
                 self.player.change_y = PLAYER_JUMP
 
     def on_key_release(self, key, modifiers):

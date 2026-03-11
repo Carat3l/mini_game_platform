@@ -10,12 +10,12 @@ class Player(arcade.Sprite):
         super().__init__()
 
         self.walk_textures = [
-            arcade.load_texture("../games_platforms/game_data/assets/player/character_green_walk_a.png"),
-            arcade.load_texture("../games_platforms/game_data/assets/player/character_green_walk_b.png")
+            arcade.load_texture("../game_data/assets/player/character_green_walk_a.png"),
+            arcade.load_texture("../game_data/assets/player/character_green_walk_b.png")
         ]
 
         self.jump_texture = arcade.load_texture(
-            "../games_platforms/game_data/assets/player/character_green_jump.png"
+            "../game_data/assets/player/character_green_jump.png"
         )
 
         self.texture = self.walk_textures[0]

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="30" height="30" tilewidth="64" tileheight="64" infinite="0" backgroundcolor="#87ceeb" nextlayerid="7" nextobjectid="6">
- <tileset firstgid="1" source="../../../../Desktop/kenny.tsx"/>
+ <tileset firstgid="1" source="../tiles/kenny.tsx"/>
  <layer id="5" name="Decor" width="30" height="30">
   <data encoding="base64" compression="zlib">
    eJztyjENAAAIA7D5wb8/TOwhtHcTALhjyg8APlt/BgBX

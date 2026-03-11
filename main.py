@@ -44,8 +44,13 @@ class Game(arcade.Window):
             arcade.load_sound("game_data/assets/sounds/step4.mp3")
         ]
 
-        self.coin_sound = arcade.load_sound("game_data/assets/sounds/coin.mp3")
-        self.jump_sound = arcade.load_sound("game_data/assets/sounds/jump.mp3")
+        self.coin_sound = arcade.load_sound(
+            "game_data/assets/sounds/coin.mp3"
+        )
+
+        self.jump_sound = arcade.load_sound(
+            "game_data/assets/sounds/jump.mp3"
+        )
 
         self.step_timer = 0
 
@@ -71,9 +76,9 @@ class Game(arcade.Window):
             self.show_instruction = True
             return
 
-        map_name = f"game_data/maps/level_{self.level:02}.tmx"
+        map_path = f"game_data/maps/level_{self.level:02}.tmx"
 
-        tile_map = arcade.load_tilemap(map_name, scaling=TILE_SCALING)
+        tile_map = arcade.load_tilemap(map_path, scaling=TILE_SCALING)
 
         self.scene = arcade.Scene.from_tilemap(tile_map)
 
@@ -204,8 +209,13 @@ class Game(arcade.Window):
 
             return
 
-        with self.camera.activate():
-            self.scene.draw()
+        if self.scene:
+
+            if self.camera:
+                with self.camera.activate():
+                    self.scene.draw()
+            else:
+                self.scene.draw()
 
         arcade.draw_text(
             f"Coins: {self.coins}/{self.total_coins}",
@@ -266,10 +276,22 @@ class Game(arcade.Window):
 
     def on_key_press(self, key, modifiers):
 
+        if key == arcade.key.ESCAPE and self.game_started:
+            self.paused = not self.paused
+            return
+
+        if self.paused:
+
+            if key == arcade.key.M:
+                self.paused = False
+                self.game_started = False
+                self.level = 1
+
+            return
+
         if self.game_won:
 
             if key == arcade.key.SPACE:
-
                 self.game_won = False
                 self.game_started = False
                 self.level = 1
@@ -283,19 +305,6 @@ class Game(arcade.Window):
                 self.level = key - arcade.key.KEY_0
                 self.game_started = True
                 self.setup()
-
-            return
-
-        if key == arcade.key.ESCAPE:
-            self.paused = not self.paused
-            return
-
-        if self.paused:
-
-            if key == arcade.key.M:
-                self.paused = False
-                self.game_started = False
-                self.level = 1
 
             return
 
@@ -342,6 +351,9 @@ class Game(arcade.Window):
         if not self.game_started or self.paused or self.show_instruction:
             return
 
+        if not self.scene:
+            return
+
         self.check_ladder()
 
         self.physics_engine.update()
@@ -368,6 +380,9 @@ class Game(arcade.Window):
         )
 
     def check_ladder(self):
+
+        if not self.scene:
+            return
 
         if "Ladders" not in self.scene:
             self.on_ladder = False
